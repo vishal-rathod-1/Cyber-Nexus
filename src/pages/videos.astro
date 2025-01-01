@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+import VideoCard from '../components/VideoCard.astro';
+import { videos } from '../data/videos';
+
+const categories = [...new Set(videos.map(video => video.category))];
+---
+
+<Layout title="Security Videos - CyberTools Daily">
+    <section class="videos-header">
+        <h1>Security Training Videos</h1>
+        <p>Learn cybersecurity through expert-curated video content</p>
+    </section>
+
+    {categories.map(category => (
+        <section class="category-section">
+            <h2>{category}</h2>
+            <div class="videos-grid">
+                {videos
+                    .filter(video => video.category === category)
+                    .map(video => (
+                        <VideoCard {...video} />
+                    ))
+                }
+            </div>
+        </section>
+    ))}
+</Layout>
+
+<style>
+    .videos-header {
+        text-align: center;
+        margin: 3rem 0;
+    }
+
+    h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .category-section {
+        margin: 4rem 0;
+        padding: 0 2rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        color: rgb(var(--accent-light));
+    }
+
+    .videos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+</style>

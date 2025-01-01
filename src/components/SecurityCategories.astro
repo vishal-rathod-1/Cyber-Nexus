@@ -1,0 +1,224 @@
+---
+import { tools } from '../data/tools';
+
+const networkTools = tools.filter(tool => tool.category === 'Network Analysis');
+const webTools = tools.filter(tool => tool.category === 'Web Security');
+const systemTools = tools.filter(tool => tool.category === 'System Security');
+---
+
+<section class="security-categories">
+    <div class="category-block">
+        <div class="cyber-border">
+            <div class="category-content">
+                <div class="category-header">
+                    <div class="icon-wrapper">
+                        <span class="icon">🔍</span>
+                    </div>
+                    <h2>Network Analysis</h2>
+                </div>
+                <p class="category-desc">Advanced packet inspection and network monitoring</p>
+                <ul class="tool-list">
+                    {networkTools.map(tool => (
+                        <li>
+                            <a href={`/tools/${tool.id}`}>
+                                <span class="tool-name">{tool.title}</span>
+                                <span class="tool-desc">{tool.description}</span>
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+                <a href="/tools?category=network" class="view-all">View All Network Tools →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-block">
+        <div class="cyber-border">
+            <div class="category-content">
+                <div class="category-header">
+                    <div class="icon-wrapper">
+                        <span class="icon">🛡️</span>
+                    </div>
+                    <h2>Web Security</h2>
+                </div>
+                <p class="category-desc">Web application testing and vulnerability assessment</p>
+                <ul class="tool-list">
+                    {webTools.map(tool => (
+                        <li>
+                            <a href={`/tools/${tool.id}`}>
+                                <span class="tool-name">{tool.title}</span>
+                                <span class="tool-desc">{tool.description}</span>
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+                <a href="/tools?category=web" class="view-all">View All Web Tools →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-block">
+        <div class="cyber-border">
+            <div class="category-content">
+                <div class="category-header">
+                    <div class="icon-wrapper">
+                        <span class="icon">🔒</span>
+                    </div>
+                    <h2>System Security</h2>
+                </div>
+                <p class="category-desc">System hardening and security assessment</p>
+                <ul class="tool-list">
+                    {systemTools.map(tool => (
+                        <li>
+                            <a href={`/tools/${tool.id}`}>
+                                <span class="tool-name">{tool.title}</span>
+                                <span class="tool-desc">{tool.description}</span>
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+                <a href="/tools?category=system" class="view-all">View All System Tools →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .security-categories {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        padding: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .category-block {
+        position: relative;
+        padding: 1px;
+    }
+
+    .cyber-border {
+        background: rgba(var(--darker-bg), 0.8);
+        border: 2px solid rgb(var(--cyber-blue));
+        position: relative;
+        padding: 2rem;
+        height: 100%;
+        box-shadow: 0 0 20px rgba(var(--cyber-blue), 0.2);
+    }
+
+    .cyber-border::before,
+    .cyber-border::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgb(var(--cyber-blue));
+    }
+
+    .cyber-border::before {
+        top: -2px;
+        left: -2px;
+        border-right: none;
+        border-bottom: none;
+    }
+
+    .cyber-border::after {
+        bottom: -2px;
+        right: -2px;
+        border-left: none;
+        border-top: none;
+    }
+
+    .category-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .icon-wrapper {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid rgb(var(--cyber-blue));
+        border-radius: 4px;
+        background: rgba(var(--darkest-bg), 0.5);
+    }
+
+    .icon {
+        font-size: 1.8rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 0;
+    }
+
+    .category-desc {
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .tool-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.5rem 0;
+    }
+
+    .tool-list li {
+        margin-bottom: 0.75rem;
+    }
+
+    .tool-list a {
+        display: block;
+        padding: 0.75rem;
+        text-decoration: none;
+        background: rgba(var(--darkest-bg), 0.5);
+        border: 1px solid rgba(var(--cyber-blue), 0.2);
+        border-radius: 4px;
+        transition: all 0.2s;
+    }
+
+    .tool-list a:hover {
+        background: rgba(var(--cyber-blue), 0.1);
+        border-color: rgba(var(--cyber-blue), 0.4);
+        transform: translateX(5px);
+    }
+
+    .tool-name {
+        display: block;
+        color: rgb(var(--cyber-blue));
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+
+    .tool-desc {
+        display: block;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+    }
+
+    .view-all {
+        display: inline-block;
+        color: rgb(var(--neon-pink));
+        text-decoration: none;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        border: 1px solid rgba(var(--neon-pink), 0.3);
+        border-radius: 4px;
+        transition: all 0.2s;
+    }
+
+    .view-all:hover {
+        color: rgb(var(--cyber-blue));
+        border-color: rgba(var(--cyber-blue), 0.4);
+        background: rgba(var(--cyber-blue), 0.1);
+    }
+</style>

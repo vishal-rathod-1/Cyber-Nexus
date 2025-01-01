@@ -1,0 +1,159 @@
+---
+export async function getStaticPaths() {
+	return [
+		{
+			params: { tool: 'wireshark' },
+			props: {
+				title: 'Wireshark',
+				description: 'Network protocol analyzer for real-time packet capture and analysis.',
+				category: 'Network Analysis',
+				image: '/images/wireshark.jpg',
+				features: [
+					'Real-time packet capture',
+					'Deep packet inspection',
+					'Protocol analysis',
+					'Network troubleshooting'
+				],
+				tutorial: `
+					1. Download and install Wireshark
+					2. Select network interface to capture
+					3. Start packet capture
+					4. Apply filters to analyze specific traffic
+					5. Export results for documentation
+				`
+			}
+		},
+		{
+			params: { tool: 'nmap' },
+			props: {
+				title: 'Nmap',
+				description: 'Network discovery and security auditing tool.',
+				category: 'Network Security',
+				image: '/images/nmap.jpg',
+				features: [
+					'Host discovery',
+					'Port scanning',
+					'Service detection',
+					'OS fingerprinting'
+				],
+				tutorial: `
+					1. Basic network scan: nmap [target]
+					2. Scan specific ports: nmap -p [ports] [target]
+					3. Service version detection: nmap -sV [target]
+					4. OS detection: nmap -O [target]
+					5. Save output: nmap -oN [file] [target]
+				`
+			}
+		},
+		{
+			params: { tool: 'metasploit' },
+			props: {
+				title: 'Metasploit',
+				description: 'Penetration testing framework for security testing.',
+				category: 'Penetration Testing',
+				image: '/images/metasploit.jpg',
+				features: [
+					'Exploit development',
+					'Vulnerability verification',
+					'Post-exploitation tools',
+					'Payload generation'
+				],
+				tutorial: `
+					1. Start Metasploit Console: msfconsole
+					2. Search for exploits: search [keyword]
+					3. Select exploit: use [exploit path]
+					4. Set options: set [option] [value]
+					5. Run exploit: exploit
+				`
+			}
+		}
+	];
+}
+
+const { tool } = Astro.params;
+const { title, description, category, image, features, tutorial } = Astro.props;
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title={`${title} - CyberTools Daily`}>
+	<article class="tool-detail">
+		<img src={image} alt={title} class="tool-image" />
+		<div class="content">
+			<span class="category">{category}</span>
+			<h1>{title}</h1>
+			<p class="description">{description}</p>
+
+			<section class="features">
+				<h2>Key Features</h2>
+				<ul>
+					{features.map(feature => (
+						<li>{feature}</li>
+					))}
+				</ul>
+			</section>
+
+			<section class="tutorial">
+				<h2>Quick Tutorial</h2>
+				<pre><code>{tutorial}</code></pre>
+			</section>
+		</div>
+	</article>
+</Layout>
+
+<style>
+	.tool-detail {
+		background: #23262d;
+		border-radius: 12px;
+		overflow: hidden;
+		margin-top: 2rem;
+	}
+	.tool-image {
+		width: 100%;
+		height: 400px;
+		object-fit: cover;
+	}
+	.content {
+		padding: 2rem;
+	}
+	.category {
+		background: rgba(var(--accent), 0.1);
+		color: rgb(var(--accent-light));
+		padding: 0.25rem 0.75rem;
+		border-radius: 1rem;
+		font-size: 0.875rem;
+	}
+	h1 {
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin: 1rem 0;
+	}
+	.description {
+		font-size: 1.25rem;
+		color: #a1a1aa;
+		margin-bottom: 2rem;
+	}
+	h2 {
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin: 2rem 0 1rem;
+		color: rgb(var(--accent-light));
+	}
+	.features ul {
+		list-style: disc;
+		margin-left: 1.5rem;
+		color: #a1a1aa;
+	}
+	.features li {
+		margin: 0.5rem 0;
+	}
+	.tutorial pre {
+		background: #1a1d24;
+		padding: 1.5rem;
+		border-radius: 8px;
+		overflow-x: auto;
+	}
+	code {
+		color: #a1a1aa;
+		white-space: pre-wrap;
+	}
+</style>

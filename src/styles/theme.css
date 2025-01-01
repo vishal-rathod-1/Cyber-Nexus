@@ -1,0 +1,62 @@
+:root {
+    /* Core Cyberpunk Colors */
+    --neon-pink: 255, 0, 153;      /* #FF0099 */
+    --cyber-blue: 0, 255, 255;     /* #00FFFF */
+    --neon-purple: 187, 0, 255;    /* #BB00FF */
+    --cyber-yellow: 255, 255, 0;   /* #FFFF00 */
+    --neon-green: 0, 255, 128;     /* #00FF80 */
+    --cyber-red: 255, 0, 84;       /* #FF0054 */
+    
+    /* Background Colors */
+    --dark-bg: 13, 13, 17;         /* #0D0D11 */
+    --darker-bg: 8, 8, 12;         /* #08080C */
+    --darkest-bg: 5, 5, 8;         /* #050508 */
+    
+    /* Theme Gradients */
+    --accent-gradient: linear-gradient(
+        45deg,
+        rgb(var(--neon-pink)),
+        rgb(var(--cyber-blue)) 30%,
+        rgb(var(--neon-purple))
+    );
+    
+    --cyber-gradient: linear-gradient(
+        135deg,
+        rgba(var(--cyber-red), 0.5),
+        rgba(var(--neon-purple), 0.5)
+    );
+    
+    /* Text Colors */
+    --text-primary: rgba(255, 255, 255, 0.9);
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    
+    /* Glow Effects */
+    --neon-glow: 0 0 10px rgba(var(--cyber-blue), 0.5),
+                0 0 20px rgba(var(--cyber-blue), 0.3);
+    --pink-glow: 0 0 10px rgba(var(--neon-pink), 0.5),
+                0 0 20px rgba(var(--neon-pink), 0.3);
+}
+
+/* Utility Classes */
+.neon-text {
+    color: rgb(var(--cyber-blue));
+    text-shadow: var(--neon-glow);
+}
+
+.cyber-border {
+    border: 1px solid rgba(var(--cyber-blue), 0.3);
+    box-shadow: var(--neon-glow);
+}
+
+.gradient-text {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cyber-card {
+    background: rgba(var(--darker-bg), 0.8);
+    border: 1px solid rgba(var(--cyber-blue), 0.2);
+    box-shadow: var(--neon-glow);
+    backdrop-filter: blur(10px);
+}

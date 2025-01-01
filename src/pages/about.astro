@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About - CyberTools Daily">
+    <section class="about-header">
+        <h1>About CyberTools Daily</h1>
+    </section>
+
+    <div class="about-content">
+        <section class="about-section">
+            <h2>Our Mission</h2>
+            <p>
+                CyberTools Daily is dedicated to providing cybersecurity professionals and enthusiasts 
+                with comprehensive information about the latest security tools and techniques. 
+                Our goal is to empower the security community with knowledge and resources 
+                to better protect digital assets and combat cyber threats.
+            </p>
+        </section>
+
+        <section class="about-section">
+            <h2>Weekly Updates</h2>
+            <p>
+                Every week, we publish detailed analyses of new security tools, including step-by-step 
+                tutorials and practical use cases. Our content is carefully curated to ensure 
+                relevance and accuracy for our readers.
+            </p>
+        </section>
+
+        <section class="about-section">
+            <h2>Contact Us</h2>
+            <p>
+                Have suggestions for tools we should cover? Want to contribute? 
+                Feel free to reach out to us at:
+            </p>
+            <ul class="contact-list">
+                <li>
+                    <strong>Email:</strong> 
+                    <a href="mailto:contact@cybertoolsdaily.com">contact@cybertoolsdaily.com</a>
+                </li>
+                <li>
+                    <strong>Twitter:</strong> 
+                    <a href="https://twitter.com/cybertoolsdaily">@cybertoolsdaily</a>
+                </li>
+                <li>
+                    <strong>GitHub:</strong> 
+                    <a href="https://github.com/cybertoolsdaily">CyberToolsDaily</a>
+                </li>
+            </ul>
+        </section>
+    </div>
+</Layout>
+
+<style>
+    .about-header {
+        text-align: center;
+        margin: 3rem 0;
+    }
+    h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .about-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+    }
+    .about-section {
+        margin-bottom: 3rem;
+    }
+    h2 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: rgb(var(--accent-light));
+    }
+    p {
+        line-height: 1.6;
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+    }
+    .contact-list {
+        list-style: none;
+        padding: 0;
+    }
+    .contact-list li {
+        margin: 1rem 0;
+        color: var(--text-secondary);
+    }
+    .contact-list a {
+        color: rgb(var(--accent-light));
+        text-decoration: none;
+    }
+    .contact-list a:hover {
+        text-decoration: underline;
+    }
+</style>

@@ -1,0 +1,30 @@
+---
+---
+<div class="logo">
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 5L35 30H5L20 5Z" class="logo-shield"/>
+        <path d="M20 12L28 25H12L20 12Z" class="logo-inner"/>
+    </svg>
+    <span class="logo-text">CyberTools Daily</span>
+</div>
+
+<style>
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    .logo-shield {
+        fill: rgb(var(--accent));
+    }
+    .logo-inner {
+        fill: rgb(var(--accent-light));
+    }
+    .logo-text {
+        font-size: 1.5rem;
+        font-weight: bold;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+</style>

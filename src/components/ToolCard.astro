@@ -1,0 +1,92 @@
+---
+interface Props {
+    title: string;
+    description: string;
+    category: string;
+    image: string;
+    href: string;
+    publishDate?: string;
+    isNew?: boolean;
+}
+
+const { title, description, category, image, href, publishDate, isNew } = Astro.props;
+---
+
+<article class="tool-card">
+    <a href={href}>
+        <img src={image} alt={title} class="tool-image" />
+        <div class="content">
+            <div class="header">
+                <span class="category">{category}</span>
+                {isNew && <span class="new-badge">New</span>}
+            </div>
+            <h2>{title}</h2>
+            <p>{description}</p>
+            {publishDate && <time class="publish-date">{publishDate}</time>}
+        </div>
+    </a>
+</article>
+
+<style>
+    .tool-card {
+        background: rgba(var(--darker-bg), 0.8);
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.2s, box-shadow 0.2s;
+        border: 1px solid rgba(var(--cyber-blue), 0.1);
+    }
+    .tool-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 0 20px rgba(var(--cyber-blue), 0.2);
+        border-color: rgba(var(--cyber-blue), 0.3);
+    }
+    .tool-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    .content {
+        padding: 1.5rem;
+    }
+    .header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .category {
+        background: rgba(var(--neon-purple), 0.1);
+        color: rgb(var(--cyber-blue));
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        font-size: 0.875rem;
+        border: 1px solid rgba(var(--cyber-blue), 0.3);
+    }
+    .new-badge {
+        background: rgb(var(--neon-pink));
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-shadow: 0 0 10px rgba(var(--neon-pink), 0.5);
+    }
+    h2 {
+        margin: 1rem 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    p {
+        color: var(--text-secondary);
+        line-height: 1.5;
+    }
+    .publish-date {
+        display: block;
+        margin-top: 1rem;
+        color: rgba(var(--cyber-blue), 0.8);
+        font-size: 0.875rem;
+    }
+</style>

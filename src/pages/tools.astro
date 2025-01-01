@@ -1,0 +1,60 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ToolCard from '../components/ToolCard.astro';
+import { tools } from '../data/tools';
+
+const categories = [...new Set(tools.map(tool => tool.category))];
+---
+
+<Layout title="Security Tools - CyberTools Daily">
+    <section class="tools-header">
+        <h1>Security Tools</h1>
+        <p>Explore our comprehensive collection of cybersecurity tools</p>
+    </section>
+
+    {categories.map(category => (
+        <section class="category-section">
+            <h2>{category}</h2>
+            <div class="tools-grid">
+                {tools
+                    .filter(tool => tool.category === category)
+                    .map(tool => (
+                        <ToolCard 
+                            {...tool}
+                            href={`/tools/${tool.id}`}
+                        />
+                    ))
+                }
+            </div>
+        </section>
+    ))}
+</Layout>
+
+<style>
+    .tools-header {
+        text-align: center;
+        margin: 3rem 0;
+    }
+    h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .category-section {
+        margin: 4rem 0;
+    }
+    h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        color: rgb(var(--accent-light));
+    }
+    .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+</style>

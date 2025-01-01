@@ -1,0 +1,120 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { isAdmin } from '../../utils/auth';
+
+// Redirect if not admin
+if (!isAdmin()) {
+    return Astro.redirect('/login');
+}
+---
+
+<Layout title="Admin Dashboard - CyberTools Daily">
+    <div class="admin-dashboard">
+        <h1>Admin Dashboard</h1>
+        
+        <div class="dashboard-grid">
+            <div class="dashboard-card">
+                <h2>Content Management</h2>
+                <ul>
+                    <li><a href="/admin/tools">Manage Tools</a></li>
+                    <li><a href="/admin/videos">Manage Videos</a></li>
+                    <li><a href="/admin/news">Manage News</a></li>
+                </ul>
+            </div>
+            
+            <div class="dashboard-card">
+                <h2>Analytics</h2>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-value">1.2k</span>
+                        <span class="stat-label">Daily Views</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">45</span>
+                        <span class="stat-label">Tools</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">28</span>
+                        <span class="stat-label">Videos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .admin-dashboard {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 0 2rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .dashboard-card {
+        background: rgba(var(--darker-bg), 0.8);
+        border-radius: 8px;
+        padding: 1.5rem;
+        border: 1px solid rgba(var(--cyber-blue), 0.2);
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        color: rgb(var(--accent-light));
+        margin-bottom: 1rem;
+    }
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        margin: 0.5rem 0;
+    }
+
+    a {
+        color: var(--text-primary);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    a:hover {
+        color: rgb(var(--cyber-blue));
+    }
+
+    .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    .stat-item {
+        text-align: center;
+    }
+
+    .stat-value {
+        display: block;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: rgb(var(--accent-light));
+    }
+
+    .stat-label {
+        font-size: 0.875rem;
+        color: var(--text-secondary);
+    }
+</style>
