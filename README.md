@@ -1,4 +1,4 @@
-# CyberTools Daily
+# CyberTools 
 
 A modern cybersecurity tools and training platform built with Astro.
 
